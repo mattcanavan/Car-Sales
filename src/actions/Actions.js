@@ -6,4 +6,8 @@
 // action creator
 export const addFeature = (newFeature) => {
     return { type: 'ADD_FEATURE', payload: newFeature}
-} //newFeature is the ID of the feature
+}
+
+export const removeFeature = (feature) => {
+    return { type: 'REMOVE_FEATURE', payload: feature}
+}

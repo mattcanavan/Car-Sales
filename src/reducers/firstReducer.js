@@ -21,13 +21,25 @@ const firstReducer = (state = initalState, action) => {
             // const result = state.additionalFeatures.filter( item => {
             //     return item.id === action.payload
             // });
-            console.log(action.payload)
-            return{
+            return {
                 ...state,
-                additionalPrice: state.car.price + action.payload.price,
+                additionalPrice: state.additionalPrice + action.payload.price,
                 car: {
                     ...state.car,
                     features: [...state.car.features, action.payload]
+                }
+            }
+
+        case 'REMOVE_FEATURE':
+            const results = state.car.features.filter( item => {
+                return (item.id !== action.payload.id)
+            })
+            return {
+                ...state,
+                additionalPrice: state.additionalPrice - action.payload.price,
+                car: {
+                    ...state.car,
+                    features: results,
                 }
             }
 
