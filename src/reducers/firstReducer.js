@@ -16,7 +16,21 @@ const initalState = {
 };
 
 const firstReducer = (state = initalState, action) => {
-    switch(action.type) {
+    switch (action.type) {
+        case 'ADD_FEATURE':
+            // const result = state.additionalFeatures.filter( item => {
+            //     return item.id === action.payload
+            // });
+            console.log(action.payload)
+            return{
+                ...state,
+                additionalPrice: state.car.price + action.payload.price,
+                car: {
+                    ...state.car,
+                    features: [...state.car.features, action.payload]
+                }
+            }
+
         default:
             return state
     }
